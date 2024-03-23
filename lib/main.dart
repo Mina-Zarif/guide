@@ -139,6 +139,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       routes: {
         RegisterScreen.routeName: (context) => const RegisterScreen(),
+        // TODO: this is temporary solution
         // LoginScreen.routeName: (context) => const LoginScreen(),
         LoginScreen.routeName: (context) => const ChooseHotelView(),
         HomeScreen.routeName: (context) => const HomeScreen(),
