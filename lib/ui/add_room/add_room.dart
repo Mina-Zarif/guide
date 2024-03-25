@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:chat/model/category.dart';
 import 'package:chat/ui/add_room/add_room_navigator.dart';
 import 'package:chat/ui/add_room/add_room_view_model.dart';
+import 'package:chat/utils.dart' as utils;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:chat/utils.dart' as Utils;
 
 class AddRoom extends StatefulWidget {
   static const String routeName = 'room';
@@ -47,15 +47,13 @@ class _AddRoomState extends State<AddRoom> implements AddRoomNavigator {
             backgroundColor: Colors.transparent,
             appBar: AppBar(
               elevation: 0,
-              title: Text(
-                'Add Room',
-              ),
+              title: const Text('Add Room'),
               centerTitle: true,
             ),
             body: Container(
-              margin: EdgeInsets.symmetric(horizontal: 18, vertical: 32),
+              margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 32),
               // width: double.infinity,
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                   color: Colors.white,
@@ -64,7 +62,7 @@ class _AddRoomState extends State<AddRoom> implements AddRoomNavigator {
                       color: Colors.grey.withOpacity(.5),
                       spreadRadius: 5,
                       blurRadius: 7,
-                      offset: Offset(0, 3),
+                      offset: const Offset(0, 3),
                     ),
                   ]),
               child: Form(
@@ -74,18 +72,18 @@ class _AddRoomState extends State<AddRoom> implements AddRoomNavigator {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
+                        const Text(
                           'Create New Room',
                           style: TextStyle(fontSize: 18, color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Image.asset('assets/images/group.png'),
                         TextFormField(
                           decoration:
-                              InputDecoration(hintText: 'Enter Room Title'),
+                              const InputDecoration(hintText: 'Enter Room Title'),
                           onChanged: (text) {
                             roomTitle = text;
                           },
@@ -96,7 +94,7 @@ class _AddRoomState extends State<AddRoom> implements AddRoomNavigator {
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
@@ -126,11 +124,11 @@ class _AddRoomState extends State<AddRoom> implements AddRoomNavigator {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         TextFormField(
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               hintText: 'Enter Room Description'),
                           maxLines: 4,
                           minLines: 4,
@@ -144,14 +142,14 @@ class _AddRoomState extends State<AddRoom> implements AddRoomNavigator {
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         ElevatedButton(
                             onPressed: () {
                               validateForm();
                             },
-                            child: Text('Add Room')),
+                            child: const Text('Add Room')),
                       ],
                     ),
                   ),
@@ -173,24 +171,24 @@ class _AddRoomState extends State<AddRoom> implements AddRoomNavigator {
 
   @override
   void hideLoading() {
-    Utils.hideLoading(context);
+    utils.hideLoading(context);
   }
 
   @override
   void navigateToHome() {
-    Timer(Duration(seconds: 2),(){
+    Timer(const Duration(seconds: 2), () {
       Navigator.pop(context);
     });
   }
 
   @override
   void showLoading() {
-    Utils.showLoading(context);
+    utils.showLoading(context);
   }
 
   @override
   void showMessage(String message) {
-    Utils.showMessage(message, context, 'OK', (context) {
+    utils.showMessage(message, context, 'OK', (context) {
       Navigator.pop(context);
     });
   }

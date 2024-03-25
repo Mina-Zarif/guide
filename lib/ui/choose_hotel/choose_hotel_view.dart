@@ -13,13 +13,9 @@ class ChooseHotelView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8),
-        child: GridView.builder(
-          padding: EdgeInsets.zero,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1.5,
-          ),
+        child: ListView.separated(
           itemBuilder: (context, index) => const HotelItemView(),
+         separatorBuilder: (context, index) => const SizedBox(height: 15),
           itemCount: 20,
         ),
       ),

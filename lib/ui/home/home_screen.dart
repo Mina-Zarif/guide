@@ -49,9 +49,10 @@ class _HomeScreenState extends State<HomeScreen> implements HomeNavigator {
                     onPressed: () async {
                       try {
                         await FirebaseAuth.instance.signOut();
-
-                        Navigator.of(context)
-                            .pushReplacementNamed(LoginScreen.routeName);
+                        if (context.mounted) {
+                          Navigator.of(context)
+                              .pushReplacementNamed(LoginScreen.routeName);
+                        }
                       } catch (e) {
                         debugPrint(e.toString());
                       }
@@ -67,13 +68,13 @@ class _HomeScreenState extends State<HomeScreen> implements HomeNavigator {
               onPressed: () {
                 Navigator.of(context).pushNamed(AddRoom.routeName);
               },
-              child: Icon(Icons.add),
+              child: const Icon(Icons.add),
             ),
             body: StreamBuilder<QuerySnapshot<Room>>(
               stream: DatabaseUtils.getRooms(),
               builder: (context, asyncSnapShot) {
                 if (asyncSnapShot.connectionState == ConnectionState.waiting) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(
                       color: Colors.blue,
                     ),
@@ -87,12 +88,12 @@ class _HomeScreenState extends State<HomeScreen> implements HomeNavigator {
                       [];
                   return GridView.builder(
                     itemBuilder: (context, index) {
-                      return RoomWidgit(
+                      return RoomWidget(
                         room: roomsList[index],
                       );
                     },
                     itemCount: roomsList.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 8,
                         crossAxisSpacing: 8),

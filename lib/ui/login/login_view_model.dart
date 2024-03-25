@@ -33,13 +33,13 @@ class LoginViewModel extends ChangeNotifier {
         navigator.hideLoading();
         // show loading
         navigator.showMessage('No user found for that email.');
-        print('No user found for that email.');
+        debugPrint('No user found for that email.');
       } else if (e.code == FirebaseErrors.wrongPassword) {
         // hide loading
         navigator.hideLoading();
         // show message
         navigator.showMessage('Wrong password provided for that user.');
-        print('Wrong password provided for that user.');
+        debugPrint('Wrong password provided for that user.');
       }
     }
   }

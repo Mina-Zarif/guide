@@ -23,7 +23,7 @@ class RegisterViewModel extends ChangeNotifier {
           lastName: lastName,
           userName: userName,
           email: email);
-      var dataUser = await DatabaseUtils.regesterUser(user);
+      await DatabaseUtils.regesterUser(user);
       // save data
       navigator.hideLoading();
       navigator.showMessage('Registered successfully');
@@ -37,12 +37,12 @@ class RegisterViewModel extends ChangeNotifier {
       } else if (e.code == FirebaseErrors.emailAlreadyInUse) {
         navigator.showLoading();
         navigator.showMessage('The account already exists for that email.');
-        print('The account already exists for that email.');
+        debugPrint('The account already exists for that email.');
       }
     } catch (e) {
       navigator.hideLoading();
       navigator.showMessage('something went wrong');
-      print(e);
+      debugPrint(e.toString());
     }
   }
 }

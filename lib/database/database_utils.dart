@@ -43,7 +43,7 @@ class DatabaseUtils {
   }
 
   static Future<void> addRoomToFirestore(Room room) async {
-    var docRef = await getRoomCollection().doc();
+    var docRef = getRoomCollection().doc();
     room.roomId = docRef.id;
     return docRef.set(room);
   }

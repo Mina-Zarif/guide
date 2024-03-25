@@ -6,7 +6,7 @@ import 'package:chat/provider/user_provider.dart';
 import 'package:chat/ui/home/home_screen.dart';
 import 'package:chat/ui/register/register_navigator.dart';
 import 'package:chat/ui/register/register_view_model.dart';
-import 'package:chat/utils.dart' as Utils;
+import 'package:chat/utils.dart' as utils;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -173,19 +173,19 @@ class _RegisterScreenState extends State<RegisterScreen>
   @override
   void hideLoading() {
     // TODO: implement hideLoading
-    Utils.hideLoading(context);
+    utils.hideLoading(context);
   }
 
   @override
   void showLoading() {
     // TODO: implement showLoading
-    Utils.showLoading(context);
+    utils.showLoading(context);
   }
 
   @override
   void showMessage(String message) {
     // TODO: implement showMessage
-    Utils.showMessage(message, context, 'Ok', (context) {
+    utils.showMessage(message, context, 'Ok', (context) {
       Navigator.pop(context);
     });
   }
@@ -195,7 +195,7 @@ class _RegisterScreenState extends State<RegisterScreen>
     var userProvider = Provider.of<UserProvider>(context, listen: false);
     userProvider.user = user;
     // TODO: implement navigateToHome
-    Timer(Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
     });
   }

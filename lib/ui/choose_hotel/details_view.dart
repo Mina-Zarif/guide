@@ -2,7 +2,7 @@ import 'package:chat/constants.dart';
 import 'package:chat/ui/choose_hotel/review_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'hightLights_view.dart';
+import 'hight_lights_view.dart';
 import 'overview_view.dart';
 
 class DetailsView extends StatefulWidget {
@@ -14,6 +14,7 @@ class DetailsView extends StatefulWidget {
 
 class _DetailsViewState extends State<DetailsView> {
   int index = 0;
+  double price = 80;
   List<Widget> bodyScreens = [
     const OverView(),
     const HighLights(),
@@ -103,6 +104,14 @@ class _DetailsViewState extends State<DetailsView> {
           ),
           const SizedBox(height: 25),
           Expanded(child: bodyScreens[index]),
+          Text(
+            "Price ber day: \$$price",
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Container(

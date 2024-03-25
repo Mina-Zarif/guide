@@ -5,23 +5,23 @@ import '../model/message.dart';
 import '../provider/user_provider.dart';
 
 class MessageWidget extends StatelessWidget {
-  Message message;
+  final Message message;
 
-  MessageWidget({super.key, required this.message});
+  const MessageWidget({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<UserProvider>(context);
     return provider.user?.id == message.senderId
         ? SentMessage(message: message)
-        : RecieveMessage(message: message);
+        : ReceiveMessage(message: message);
   }
 }
 
 class SentMessage extends StatelessWidget {
-  Message message;
+  final Message message;
 
-  SentMessage({super.key, required this.message});
+  const SentMessage({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,8 @@ class SentMessage extends StatelessWidget {
                   topRight: Radius.circular(12),
                   topLeft: Radius.circular(12),
                   bottomLeft: Radius.circular(12))),
-          child: Text(message.content, style: const TextStyle(color: Colors.white)),
+          child: Text(message.content,
+              style: const TextStyle(color: Colors.white)),
         ),
         Text(
           message.dateTime.toString(),
@@ -47,10 +48,10 @@ class SentMessage extends StatelessWidget {
   }
 }
 
-class RecieveMessage extends StatelessWidget {
-  Message message;
+class ReceiveMessage extends StatelessWidget {
+  final Message message;
 
-  RecieveMessage({super.key, required this.message});
+  const ReceiveMessage({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +70,8 @@ class RecieveMessage extends StatelessWidget {
                   topRight: Radius.circular(12),
                   topLeft: Radius.circular(12),
                   bottomRight: Radius.circular(12))),
-          child: Text(message.content, style: const TextStyle(color: Colors.black)),
+          child: Text(message.content,
+              style: const TextStyle(color: Colors.black)),
         ),
       ],
     );
