@@ -29,17 +29,16 @@ class JourneyTypeScreen extends StatelessWidget {
         title: const Text("Choose Journey Type"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: List.generate(
-            items.length,
-            (index) => InkWell(
-              onTap: () => _navigateToJourneyPage(context, items[index].title),
-              child: JourneyItemView(
-                model: items[index],
-              ),
+        child: ListView.separated(
+          padding: const EdgeInsetsDirectional.symmetric(vertical: 35),
+          itemBuilder: (context, index) => InkWell(
+            onTap: () => _navigateToJourneyPage(context, items[index].title),
+            child: JourneyItemView(
+              model: items[index],
             ),
           ),
+          separatorBuilder: (context, index) => const SizedBox(height: 30),
+          itemCount: items.length,
         ),
       ),
     );

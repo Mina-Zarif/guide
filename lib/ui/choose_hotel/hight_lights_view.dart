@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
-
 class HighLights extends StatelessWidget {
-  const HighLights({super.key});
+  const HighLights({super.key, required this.highLights});
+
+  final String highLights;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 50),
       child: Text(
         highLights,
-        style: TextStyle(fontSize: 16, height: 1.8),
+        style: const TextStyle(fontSize: 18, height: 1.8),
         textAlign: TextAlign.start,
       ),
     );

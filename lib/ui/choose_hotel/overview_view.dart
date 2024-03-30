@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
-
 class OverView extends StatelessWidget {
-  const OverView({super.key});
+  const OverView({super.key, required this.overView});
+
+  final String overView;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 50),
       child: Text(
         overView,
-        style: TextStyle(
-          fontSize: 16,
+        style: const TextStyle(
+          fontSize: 20,
         ),
         textAlign: TextAlign.start,
       ),

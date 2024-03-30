@@ -1,4 +1,4 @@
-import 'package:chat/constants.dart';
+import 'package:chat/model/hotel_model.dart';
 import 'package:chat/ui/choose_hotel/review_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +6,9 @@ import 'hight_lights_view.dart';
 import 'overview_view.dart';
 
 class DetailsView extends StatefulWidget {
-  const DetailsView({super.key});
+  const DetailsView({super.key, required this.hotelModel});
+
+  final HotelModel hotelModel;
 
   @override
   State<DetailsView> createState() => _DetailsViewState();
@@ -14,12 +16,17 @@ class DetailsView extends StatefulWidget {
 
 class _DetailsViewState extends State<DetailsView> {
   int index = 0;
-  double price = 80;
-  List<Widget> bodyScreens = [
-    const OverView(),
-    const HighLights(),
-    Review(),
-  ];
+  late List<Widget> bodyScreens;
+
+  @override
+  void initState() {
+    super.initState();
+    bodyScreens = [
+      OverView(overView: widget.hotelModel.overview),
+      HighLights(highLights: widget.hotelModel.highLights),
+      Review(reviews: widget.hotelModel.reviews),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +38,7 @@ class _DetailsViewState extends State<DetailsView> {
         children: [
           Center(
             child: Image.network(
-              imageUrl,
+              widget.hotelModel.imageUrl,
               fit: BoxFit.fill,
             ),
           ),
@@ -105,7 +112,7 @@ class _DetailsViewState extends State<DetailsView> {
           const SizedBox(height: 25),
           Expanded(child: bodyScreens[index]),
           Text(
-            "Price ber day: \$$price",
+            "Price ber day: \$${widget.hotelModel.priceBerDay.toString()}",
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
