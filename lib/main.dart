@@ -1,7 +1,7 @@
 import 'package:chat/chat/chat_screen.dart';
 import 'package:chat/provider/user_provider.dart';
 import 'package:chat/ui/add_room/add_room.dart';
-import 'package:chat/ui/choose_journey_type/choose_journey_type_screen.dart';
+import 'package:chat/ui/dashboard/dashboar_view.dart';
 import 'package:chat/ui/home/home_screen.dart';
 import 'package:chat/ui/login/login_screen.dart';
 import 'package:chat/ui/register/register_screen.dart';
@@ -146,7 +146,7 @@ class _MyAppState extends State<MyApp> {
         RegisterScreen.routeName: (context) => const RegisterScreen(),
         // TODO: this is temporary solution
         // LoginScreen.routeName: (context) => const LoginScreen(),
-        LoginScreen.routeName: (context) => const JourneyTypeScreen(),
+        LoginScreen.routeName: (context) => const DashboardView(),
         HomeScreen.routeName: (context) => const HomeScreen(),
         AddRoom.routeName: (context) => const AddRoom(),
         ChatScreen.routeName: (context) => const ChatScreen(),
